@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bappy Simple Agent Landing</title>
+    <style>
+      :root {
+        --cream: #fbf4df;
+        --cream-2: #f4e9c9;
+        --ink: #16211d;
+        --muted: #5f675e;
+        --green: #1f755f;
+        --mint: #9ed8bf;
+        --mint-soft: #d8f0df;
+        --yellow: #f4c95d;
+        --coral: #ef845f;
+        --blue: #7fb1d6;
+        --paper: #fffaf0;
+        --line: #1c2b2426;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "Avenir Next", "Geist", "Segoe UI", system-ui, sans-serif;
+        margin: 0;
+        min-width: 320px;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        overflow: hidden;
+      }
+
+      .nav {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1240px;
+        min-height: 78px;
+        padding: 0 22px;
+      }
+
+      .brand {
+        align-items: center;
+        display: inline-flex;
+        gap: 12px;
+      }
+
+      .brand-mark {
+        align-items: center;
+        background: var(--ink);
+        border: 3px solid var(--ink);
+        border-radius: 16px;
+        box-shadow: 5px 5px 0 var(--yellow);
+        color: var(--paper);
+        display: inline-flex;
+        font-size: 1.1rem;
+        font-weight: 950;
+        height: 44px;
+        justify-content: center;
+        width: 44px;
+      }
+
+      .brand strong {
+        font-size: 1.15rem;
+        font-weight: 950;
+      }
+
+      .nav-links {
+        align-items: center;
+        display: flex;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        color: #39423c;
+        font-size: 0.94rem;
+        font-weight: 860;
+      }
+
+      .nav-cta,
+      .button-primary,
+      .button-secondary {
+        align-items: center;
+        border: 3px solid var(--ink);
+        border-radius: 999px;
+        display: inline-flex;
+        font-weight: 950;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 20px;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .nav-cta,
+      .button-primary {
+        background: var(--yellow);
+        box-shadow: 5px 5px 0 var(--ink);
+      }
+
+      .button-secondary {
+        background: var(--paper);
+      }
+
+      .nav-cta:active,
+      .button-primary:active,
+      .button-secondary:active {
+        box-shadow: 2px 2px 0 var(--ink);
+        transform: translate(3px, 3px);
+      }
+
+      .hero {
+        margin: 0 auto;
+        max-width: 1240px;
+        padding: 24px 22px 56px;
+      }
+
+      .hero-grid {
+        align-items: center;
+        display: grid;
+        gap: clamp(28px, 5vw, 66px);
+        grid-template-columns: minmax(0, 1.02fr) minmax(420px, 0.98fr);
+      }
+
+      .eyebrow {
+        align-items: center;
+        background: var(--mint-soft);
+        border: 3px solid var(--ink);
+        border-radius: 999px;
+        box-shadow: 4px 4px 0 var(--ink);
+        display: inline-flex;
+        font-size: 0.84rem;
+        font-weight: 950;
+        gap: 9px;
+        margin: 0 0 20px;
+        padding: 8px 14px 8px 9px;
+        text-transform: uppercase;
+      }
+
+      .status-dot {
+        background: var(--green);
+        border: 3px solid var(--paper);
+        border-radius: 999px;
+        height: 18px;
+        width: 18px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 5.2vw, 5.75rem);
+        letter-spacing: 0;
+        line-height: 0.91;
+        margin: 0;
+        max-width: 670px;
+      }
+
+      h1 span {
+        color: var(--green);
+        display: block;
+      }
+
+      .hero-copy p {
+        color: var(--muted);
+        font-size: clamp(1.04rem, 1.35vw, 1.18rem);
+        font-weight: 650;
+        line-height: 1.43;
+        margin: 18px 0 0;
+        max-width: 600px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .simple-proof {
+        border-top: 3px solid var(--ink);
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 34px;
+        padding-top: 20px;
+      }
+
+      .proof-card {
+        background: var(--paper);
+        border: 3px solid var(--ink);
+        border-radius: 18px;
+        box-shadow: 5px 5px 0 var(--ink);
+        min-height: 112px;
+        padding: 16px;
+      }
+
+      .proof-card span {
+        color: var(--muted);
+        display: block;
+        font-size: 0.76rem;
+        font-weight: 950;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .proof-card strong {
+        display: block;
+        font-size: clamp(1.25rem, 2vw, 1.8rem);
+        line-height: 1;
+      }
+
+      .hero-art {
+        min-height: 560px;
+        position: relative;
+      }
+
+      .blob {
+        background: var(--mint);
+        border: 4px solid var(--ink);
+        border-radius: 42% 58% 55% 45% / 44% 38% 62% 56%;
+        box-shadow: 9px 9px 0 var(--ink);
+        height: min(56vw, 560px);
+        max-height: 560px;
+        min-height: 430px;
+        position: absolute;
+        right: 0;
+        top: 24px;
+        width: min(48vw, 520px);
+        z-index: 0;
+      }
+
+      .bappy {
+        animation: floaty 4.5s ease-in-out infinite;
+        background: var(--green);
+        border: 5px solid var(--ink);
+        border-radius: 44px;
+        box-shadow: 9px 9px 0 var(--ink);
+        height: 260px;
+        left: 50%;
+        margin-left: -130px;
+        position: absolute;
+        top: 118px;
+        width: 260px;
+        z-index: 2;
+      }
+
+      .bappy::before {
+        background: #ffd1ba;
+        border: 5px solid var(--ink);
+        border-radius: 999px;
+        content: "";
+        height: 96px;
+        left: 77px;
+        position: absolute;
+        top: 54px;
+        width: 96px;
+      }
+
+      .bappy::after {
+        background:
+          radial-gradient(circle at 56px 28px, var(--ink) 0 8px, transparent 9px),
+          radial-gradient(circle at 96px 28px, var(--ink) 0 8px, transparent 9px),
+          linear-gradient(90deg, transparent 0 70px, var(--ink) 70px 84px, transparent 84px 100%);
+        content: "";
+        height: 70px;
+        left: 52px;
+        position: absolute;
+        top: 85px;
+        width: 150px;
+        z-index: 3;
+      }
+
+      .bappy-light {
+        animation: pulse 1.8s ease-in-out infinite;
+        background: var(--yellow);
+        border: 5px solid var(--ink);
+        border-radius: 999px;
+        height: 46px;
+        position: absolute;
+        right: 32px;
+        top: 32px;
+        width: 46px;
+        z-index: 4;
+      }
+
+      .bappy-body {
+        background: var(--paper);
+        border: 5px solid var(--ink);
+        border-radius: 28px 28px 20px 20px;
+        bottom: -58px;
+        height: 116px;
+        left: 50%;
+        margin-left: -82px;
+        position: absolute;
+        width: 164px;
+      }
+
+      .bappy-body::before,
+      .bappy-body::after {
+        background: var(--coral);
+        border: 5px solid var(--ink);
+        border-radius: 999px;
+        content: "";
+        height: 28px;
+        position: absolute;
+        top: 32px;
+        width: 56px;
+      }
+
+      .bappy-body::before {
+        left: -54px;
+        transform: rotate(18deg);
+      }
+
+      .bappy-body::after {
+        right: -54px;
+        transform: rotate(-18deg);
+      }
+
+      .lead-note,
+      .lead-note-two,
+      .lead-note-three {
+        background: var(--paper);
+        border: 4px solid var(--ink);
+        border-radius: 18px;
+        box-shadow: 6px 6px 0 var(--ink);
+        display: grid;
+        gap: 8px;
+        min-width: 180px;
+        padding: 15px;
+        position: absolute;
+        z-index: 3;
+      }
+
+      .lead-note span,
+      .lead-note-two span,
+      .lead-note-three span {
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .lead-note strong,
+      .lead-note-two strong,
+      .lead-note-three strong {
+        font-size: 1.05rem;
+      }
+
+      .lead-note {
+        left: 0;
+        top: 46px;
+        transform: rotate(-5deg);
+      }
+
+      .lead-note-two {
+        background: #ffe9a6;
+        right: 8px;
+        top: 238px;
+        transform: rotate(5deg);
+      }
+
+      .lead-note-three {
+        background: #dcebf7;
+        bottom: 46px;
+        left: 50px;
+        transform: rotate(3deg);
+      }
+
+      .arrow {
+        border-bottom: 5px solid var(--ink);
+        height: 60px;
+        left: 78px;
+        position: absolute;
+        top: 312px;
+        transform: rotate(16deg);
+        width: 168px;
+        z-index: 1;
+      }
+
+      .arrow::after {
+        border-right: 5px solid var(--ink);
+        border-top: 5px solid var(--ink);
+        content: "";
+        height: 22px;
+        position: absolute;
+        right: -2px;
+        top: 48px;
+        transform: rotate(45deg);
+        width: 22px;
+      }
+
+      .section {
+        border-top: 3px solid var(--ink);
+        padding: clamp(68px, 9vw, 118px) 22px;
+      }
+
+      .section-inner {
+        margin: 0 auto;
+        max-width: 1240px;
+      }
+
+      .kicker {
+        color: var(--green);
+        font-size: 0.82rem;
+        font-weight: 950;
+        margin: 0 0 14px;
+        text-transform: uppercase;
+      }
+
+      .section-title {
+        font-size: clamp(2.45rem, 4.8vw, 5.8rem);
+        letter-spacing: 0;
+        line-height: 0.92;
+        margin: 0;
+        max-width: 1040px;
+      }
+
+      .section-lede {
+        color: var(--muted);
+        font-size: clamp(1.06rem, 1.45vw, 1.28rem);
+        font-weight: 650;
+        line-height: 1.48;
+        margin: 22px 0 0;
+        max-width: 720px;
+      }
+
+      .steps {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin-top: 46px;
+      }
+
+      .step {
+        background: var(--paper);
+        border: 4px solid var(--ink);
+        border-radius: 24px;
+        box-shadow: 7px 7px 0 var(--ink);
+        min-height: 270px;
+        padding: 22px;
+      }
+
+      .step:nth-child(2) {
+        background: var(--mint-soft);
+      }
+
+      .step:nth-child(3) {
+        background: #ffe9a6;
+      }
+
+      .step:nth-child(4) {
+        background: #dcebf7;
+      }
+
+      .step-number {
+        align-items: center;
+        background: var(--ink);
+        border-radius: 999px;
+        color: var(--paper);
+        display: inline-flex;
+        font-weight: 950;
+        height: 42px;
+        justify-content: center;
+        margin-bottom: 24px;
+        width: 42px;
+      }
+
+      .step h3 {
+        font-size: 1.42rem;
+        line-height: 1;
+        margin: 0 0 13px;
+      }
+
+      .step p {
+        color: #465047;
+        font-size: 1rem;
+        font-weight: 650;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .closer-section {
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .closer-section .kicker {
+        color: var(--mint);
+      }
+
+      .closer-section .section-lede {
+        color: #ccd2c6;
+      }
+
+      .handoff-card {
+        background: var(--paper);
+        border: 4px solid var(--paper);
+        border-radius: 28px;
+        box-shadow: 8px 8px 0 var(--yellow);
+        color: var(--ink);
+        display: grid;
+        gap: 0;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        margin-top: 48px;
+        overflow: hidden;
+      }
+
+      .handoff-left {
+        align-content: end;
+        background: var(--mint);
+        border-right: 4px solid var(--ink);
+        display: grid;
+        min-height: 430px;
+        padding: 30px;
+        position: relative;
+      }
+
+      .small-bappy {
+        background: var(--green);
+        border: 4px solid var(--ink);
+        border-radius: 26px;
+        box-shadow: 6px 6px 0 var(--ink);
+        height: 146px;
+        left: 34px;
+        position: absolute;
+        top: 34px;
+        width: 146px;
+      }
+
+      .small-bappy::before {
+        background: #ffd1ba;
+        border: 4px solid var(--ink);
+        border-radius: 999px;
+        content: "";
+        height: 58px;
+        left: 42px;
+        position: absolute;
+        top: 33px;
+        width: 58px;
+      }
+
+      .small-bappy::after {
+        background: var(--yellow);
+        border: 4px solid var(--ink);
+        border-radius: 999px;
+        content: "";
+        height: 25px;
+        position: absolute;
+        right: 17px;
+        top: 17px;
+        width: 25px;
+      }
+
+      .handoff-left h3 {
+        font-size: clamp(2rem, 3.3vw, 4rem);
+        line-height: 0.92;
+        margin: 0;
+      }
+
+      .handoff-list {
+        display: grid;
+      }
+
+      .handoff-row {
+        border-bottom: 3px solid var(--ink);
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 140px 1fr;
+        padding: 22px 26px;
+      }
+
+      .handoff-row:last-child {
+        border-bottom: 0;
+      }
+
+      .handoff-row span {
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .handoff-row strong {
+        font-size: 1.16rem;
+        line-height: 1.25;
+      }
+
+      .voice-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: 0.9fr 1.1fr;
+        margin-top: 48px;
+      }
+
+      .voice-card,
+      .tone-card {
+        background: var(--paper);
+        border: 4px solid var(--ink);
+        border-radius: 28px;
+        box-shadow: 7px 7px 0 var(--ink);
+      }
+
+      .voice-card {
+        align-content: center;
+        display: grid;
+        min-height: 440px;
+        overflow: hidden;
+        padding: 28px;
+        position: relative;
+      }
+
+      .voice-card::before {
+        background: var(--coral);
+        border: 4px solid var(--ink);
+        border-radius: 999px;
+        content: "";
+        height: 170px;
+        position: absolute;
+        right: -48px;
+        top: -42px;
+        width: 170px;
+      }
+
+      .voice-card h3 {
+        font-size: clamp(2.2rem, 4vw, 4.8rem);
+        line-height: 0.9;
+        margin: 0;
+        max-width: 560px;
+        position: relative;
+      }
+
+      .voice-card p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        font-weight: 650;
+        line-height: 1.45;
+        margin: 24px 0 0;
+        max-width: 560px;
+        position: relative;
+      }
+
+      .tone-card {
+        display: grid;
+        overflow: hidden;
+      }
+
+      .tone-row {
+        border-bottom: 3px solid var(--ink);
+        display: grid;
+        gap: 12px;
+        padding: 24px;
+      }
+
+      .tone-row:nth-child(2) {
+        background: var(--mint-soft);
+      }
+
+      .tone-row:nth-child(3) {
+        background: #ffe9a6;
+      }
+
+      .tone-row:last-child {
+        border-bottom: 0;
+      }
+
+      .tone-row span {
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .tone-row strong {
+        font-size: 1.28rem;
+      }
+
+      .tone-row p {
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.42;
+        margin: 0;
+      }
+
+      .final {
+        background: var(--green);
+        color: var(--paper);
+      }
+
+      .final-wrap {
+        align-items: end;
+        display: grid;
+        gap: 34px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        margin: 0 auto;
+        max-width: 1240px;
+      }
+
+      .final h2 {
+        font-size: clamp(3.2rem, 6.7vw, 8rem);
+        line-height: 0.86;
+        margin: 0;
+        max-width: 960px;
+      }
+
+      .final p {
+        color: #e4f2e8;
+        font-size: 1.16rem;
+        font-weight: 650;
+        line-height: 1.48;
+        margin: 22px 0 0;
+        max-width: 640px;
+      }
+
+      .final .button-primary {
+        background: var(--yellow);
+        color: var(--ink);
+      }
+
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-1deg);
+        }
+
+        50% {
+          transform: translateY(-14px) rotate(1deg);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.12);
+        }
+      }
+
+      @media (max-width: 1040px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid,
+        .handoff-card,
+        .voice-grid,
+        .final-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-art {
+          min-height: 580px;
+        }
+
+        .steps {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .handoff-left {
+          border-right: 0;
+          border-bottom: 4px solid var(--ink);
+        }
+      }
+
+      @media (max-height: 760px) and (min-width: 900px) {
+        .hero {
+          padding-top: 12px;
+        }
+
+        .simple-proof {
+          display: none;
+        }
+
+        .hero-art {
+          min-height: 500px;
+        }
+
+        .blob {
+          height: 500px;
+          min-height: 380px;
+          top: 18px;
+        }
+
+        .bappy {
+          height: 230px;
+          margin-left: -115px;
+          top: 104px;
+          width: 230px;
+        }
+
+        .bappy::before {
+          height: 84px;
+          left: 68px;
+          top: 48px;
+          width: 84px;
+        }
+
+        .bappy::after {
+          background:
+            radial-gradient(circle at 50px 26px, var(--ink) 0 7px, transparent 8px),
+            radial-gradient(circle at 86px 26px, var(--ink) 0 7px, transparent 8px),
+            linear-gradient(90deg, transparent 0 63px, var(--ink) 63px 75px, transparent 75px 100%);
+          left: 47px;
+          top: 76px;
+          width: 136px;
+        }
+
+        .bappy-light {
+          height: 40px;
+          right: 28px;
+          top: 28px;
+          width: 40px;
+        }
+
+        .bappy-body {
+          height: 104px;
+          margin-left: -74px;
+          width: 148px;
+        }
+
+        .lead-note {
+          top: 26px;
+        }
+
+        .lead-note-two {
+          top: 214px;
+        }
+
+        .lead-note-three {
+          bottom: 18px;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .nav {
+          min-height: 68px;
+          padding: 0 16px;
+        }
+
+        .nav-cta {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+          padding: 36px 16px 62px;
+        }
+
+        h1 {
+          font-size: clamp(2.8rem, 13.4vw, 4.45rem);
+          line-height: 0.91;
+        }
+
+        .eyebrow {
+          font-size: 0.74rem;
+          line-height: 1.15;
+          margin-bottom: 14px;
+          max-width: 100%;
+        }
+
+        .hero-copy p {
+          font-size: 1rem;
+        }
+
+        .simple-proof,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+
+        .simple-proof {
+          display: none;
+        }
+
+        .hero-art {
+          margin-top: 12px;
+          min-height: 520px;
+        }
+
+        .blob {
+          height: 430px;
+          right: -38px;
+          top: 42px;
+          width: 360px;
+        }
+
+        .bappy {
+          height: 208px;
+          margin-left: -104px;
+          top: 146px;
+          width: 208px;
+        }
+
+        .bappy::before {
+          height: 78px;
+          left: 61px;
+          top: 43px;
+          width: 78px;
+        }
+
+        .bappy::after {
+          background:
+            radial-gradient(circle at 44px 24px, var(--ink) 0 7px, transparent 8px),
+            radial-gradient(circle at 78px 24px, var(--ink) 0 7px, transparent 8px),
+            linear-gradient(90deg, transparent 0 55px, var(--ink) 55px 66px, transparent 66px 100%);
+          left: 43px;
+          top: 66px;
+          width: 122px;
+        }
+
+        .bappy-light {
+          height: 38px;
+          right: 25px;
+          top: 25px;
+          width: 38px;
+        }
+
+        .bappy-body {
+          height: 96px;
+          margin-left: -68px;
+          width: 136px;
+        }
+
+        .lead-note,
+        .lead-note-two,
+        .lead-note-three {
+          min-width: 148px;
+          padding: 12px;
+        }
+
+        .lead-note {
+          left: 0;
+          top: 0;
+        }
+
+        .lead-note-two {
+          right: 0;
+          top: 292px;
+        }
+
+        .lead-note-three {
+          bottom: 14px;
+          left: 14px;
+        }
+
+        .arrow {
+          display: none;
+        }
+
+        .section {
+          padding: 66px 16px;
+        }
+
+        .section-title {
+          font-size: clamp(2.38rem, 12vw, 4.4rem);
+        }
+
+        .handoff-row {
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+
+        .handoff-left,
+        .voice-card {
+          min-height: 360px;
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#">
+          <span class="brand-mark">b</span>
+          <strong>bappy</strong>
+        </a>
+        <div class="nav-links">
+          <a href="#how">How it works</a>
+          <a href="#handoff">Closer handoff</a>
+          <a href="#agent">Bappy voice</a>
+        </div>
+        <a class="nav-cta" href="#start">Start with interested leads</a>
+      </nav>
+
+      <header class="hero">
+        <div class="hero-grid">
+          <section class="hero-copy">
+            <p class="eyebrow"><span class="status-dot"></span> AI opener for MCA shops</p>
+            <h1>Bappy works MCA leads <span>until they're ready to close.</span></h1>
+            <p>
+              Bappy is an AI agent for MCA brokers. It follows up with interested
+              merchants, gets the basics, moves them toward an application, and
+              gives closers better work to close.
+            </p>
+            <div class="hero-actions">
+              <a class="button-primary" href="#how">See how it works</a>
+              <a class="button-secondary" href="#handoff">What closers get</a>
+            </div>
+            <div class="simple-proof" aria-label="Bappy value">
+              <div class="proof-card">
+                <span>Comes in</span>
+                <strong>inbound interest</strong>
+              </div>
+              <div class="proof-card">
+                <span>Bappy does</span>
+                <strong>the middle work</strong>
+              </div>
+              <div class="proof-card">
+                <span>Closers get</span>
+                <strong>applications to work</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="hero-art" aria-label="Bappy illustration">
+            <div class="blob"></div>
+            <div class="lead-note">
+              <span>Inbound interest</span>
+              <strong>“Need 50k”</strong>
+            </div>
+            <div class="lead-note-two">
+              <span>Bappy asks</span>
+              <strong>Amount + email</strong>
+            </div>
+            <div class="lead-note-three">
+              <span>Closer gets</span>
+              <strong>App-ready file</strong>
+            </div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="bappy">
+              <div class="bappy-light"></div>
+              <div class="bappy-body"></div>
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <section class="section" id="how">
+        <div class="section-inner">
+          <p class="kicker">How it works</p>
+          <h2 class="section-title">Bappy turns interest into application-ready work.</h2>
+          <p class="section-lede">
+            The idea is simple: your shop already creates interest. Bappy
+            works the response stage so more broker time turns into focused
+            closing work.
+          </p>
+
+          <div class="steps">
+            <article class="step">
+              <span class="step-number">1</span>
+              <h3>Merchant responds to outreach</h3>
+              <p>Bappy starts when an interested merchant raises their hand.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">2</span>
+              <h3>Bappy keeps the conversation moving</h3>
+              <p>It answers simply, asks useful questions, and keeps momentum alive.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">3</span>
+              <h3>Application path gets opened</h3>
+              <p>Bappy captures amount, email, urgency, and nudges toward the app.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">4</span>
+              <h3>Closer gets an app-ready file</h3>
+              <p>The broker gets the context in one place and can focus on closing work.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section closer-section" id="handoff">
+        <div class="section-inner">
+          <p class="kicker">Closer handoff</p>
+          <h2 class="section-title">Closers get files that are ready for their best work.</h2>
+          <p class="section-lede">
+            Bappy does the prep work around the conversation so the closer can
+            spend time on the deal, not reconstructing the thread.
+          </p>
+
+          <div class="handoff-card">
+            <div class="handoff-left">
+              <div class="small-bappy" aria-hidden="true"></div>
+              <h3>What Bappy tees up.</h3>
+            </div>
+            <div class="handoff-list">
+              <div class="handoff-row">
+                <span>Who</span>
+                <strong>Merchant name, business, phone, and best email.</strong>
+              </div>
+              <div class="handoff-row">
+                <span>What</span>
+                <strong>Requested amount, use of funds, urgency, and any key context.</strong>
+              </div>
+              <div class="handoff-row">
+                <span>Progress</span>
+                <strong>What Bappy already asked, answered, sent, or promised.</strong>
+              </div>
+              <div class="handoff-row">
+                <span>Closer work</span>
+                <strong>Send app, call now, review the file, or move the deal forward.</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="agent">
+        <div class="section-inner">
+          <p class="kicker">Bappy voice</p>
+          <h2 class="section-title">Friendly enough for merchants. Direct enough for sales.</h2>
+          <p class="section-lede">
+            To the merchant, the experience should feel like a sharp broker:
+            responsive, patient, direct, and always moving the application forward.
+          </p>
+
+          <div class="voice-grid">
+            <div class="voice-card">
+              <h3>A reliable opener behind every conversation.</h3>
+              <p>
+                Bappy answers fast, keeps its cool, asks the next useful thing,
+                and gets the merchant closer to a submitted application.
+              </p>
+            </div>
+            <div class="tone-card">
+              <div class="tone-row">
+                <span>Fast</span>
+                <strong>Replies while the merchant is still interested.</strong>
+                <p>Especially after hours, weekends, and during busy broker windows.</p>
+              </div>
+              <div class="tone-row">
+                <span>Clear</span>
+                <strong>One next step at a time.</strong>
+                <p>Amount, email, application, call, or broker handoff.</p>
+              </div>
+              <div class="tone-row">
+                <span>Useful</span>
+                <strong>Every good conversation becomes easier to close.</strong>
+                <p>Closers get the story, not just another raw inbox thread.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section final" id="start">
+        <div class="final-wrap">
+          <div>
+            <h2>Turn more broker time into closing time.</h2>
+            <p>
+              Start with real response-stage conversations, review the drafts, tune the voice, and
+              turn the messy middle into application-ready MCA opportunities.
+            </p>
+          </div>
+          <a class="button-primary" href="#">Start with interested leads</a>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
