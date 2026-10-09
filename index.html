@@ -765,7 +765,7 @@
         align-items: center;
         display: flex;
         justify-content: space-between;
-        padding: 12px 12px 8px;
+        padding: 40px 12px 8px;
       }
 
       .pp-head b {
@@ -1035,7 +1035,7 @@
       }
 
       .pa-view {
-        min-height: 484px;
+        min-height: 514px;
       }
 
       .pa-nav span[data-go] {
@@ -1254,14 +1254,14 @@
       .cv-thread {
         display: flex;
         flex-direction: column;
-        height: 470px;
+        height: 500px;
       }
 
       .cv-head {
         align-items: baseline;
         display: flex;
         gap: 10px;
-        padding: 12px 16px 8px;
+        padding: 12px 16px 10px;
         white-space: nowrap;
       }
 
@@ -1279,29 +1279,22 @@
         font-size: 16px;
       }
 
-      .cv-head .cv-take {
+      .cv-head .cv-tabs {
         align-self: center;
         border: 1px solid #1c2b2433;
         border-radius: 999px;
         color: var(--ink);
+        display: inline-flex;
         margin-left: auto;
+        overflow: hidden;
+      }
+
+      .cv-head .cv-tabs span {
+        color: inherit;
         padding: 3px 12px;
       }
 
-      .cv-tabs {
-        border: 1px solid #1c2b2433;
-        border-radius: 999px;
-        display: inline-flex;
-        margin: 0 16px 8px;
-        overflow: hidden;
-        width: max-content;
-      }
-
-      .cv-tabs span {
-        padding: 4px 14px;
-      }
-
-      .cv-tabs .on {
+      .cv-head .cv-tabs .on {
         background: var(--ink);
         color: #fff;
       }
@@ -1314,6 +1307,8 @@
         flex-direction: column;
         gap: 6px;
         justify-content: flex-end;
+        -webkit-mask-image: linear-gradient(transparent, #000 22px);
+        mask-image: linear-gradient(transparent, #000 22px);
         min-height: 0;
         overflow: hidden;
         padding: 10px 14px;
@@ -1555,9 +1550,11 @@
         border: 1px solid var(--rule);
         border-radius: 20px;
         display: grid;
-        grid-template-rows: 1fr auto;
+        grid-row: span 2;
+        grid-template-rows: subgrid;
         min-width: 0;
         overflow: hidden;
+        row-gap: 0;
       }
 
       .demo {
@@ -1981,9 +1978,13 @@
         .pa-me span,
         .pa-launch,
         .dl-filters,
-        .cv-head span:not(.cv-back),
+        .cv-head > span:not(.cv-back):not(.cv-tabs),
         .cv-compose span {
           display: none;
+        }
+
+        .cv-head {
+          flex-wrap: wrap;
         }
 
         .cv-thread {
@@ -2212,9 +2213,8 @@
             <div class="pa-list cv-thread">
               <div class="cv-head">
                 <span class="cv-back">←</span><b>Bella's Bistro</b><span>Maria</span><span>With Bappy</span>
-                <span class="cv-take">Take over</span>
+                <span class="cv-tabs"><span>The deal</span><span class="on">Texts with Maria</span></span>
               </div>
-              <div class="cv-tabs"><span>The deal</span><span class="on">Texts with Maria</span></div>
               <div class="cv-msgs">
                 <div class="msg b">Hi Maria, this is Jordan with Juniper Business Capital. Still looking at funding for the restaurant?<small>Bappy · Tue 9:02 AM</small></div>
                 <div class="msg m">yes. what kind of terms are you offering?<small>Tue 11:46 PM</small></div>
