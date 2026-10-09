@@ -1035,7 +1035,7 @@
       }
 
       .pa-view {
-        min-height: 452px;
+        min-height: 484px;
       }
 
       .pa-nav span[data-go] {
@@ -1195,184 +1195,235 @@
         font-weight: 700;
       }
 
-      /* Campaigns: what each campaign brings in. */
-      .cp-head {
-        align-items: center;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 14px;
-        padding: 4px 18px 12px;
-      }
-
-      .cp-head .pa-title {
-        font-size: 21px;
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .cp-tabs {
-        display: flex;
-        gap: 4px;
-      }
-
-      .cp-tabs span {
-        border-radius: 8px;
-        color: var(--soft);
-        padding: 3px 10px;
-      }
-
-      .cp-tabs .on {
+      /* Conversation: a thread as the broker sees it. */
+      .cv-list {
+        align-content: start;
         background: var(--paper);
-        border: 1px solid #1c2b2426;
-        color: var(--ink);
+        border: 1px solid var(--rule);
+        border-radius: 12px;
+        gap: 0;
+        overflow: hidden;
       }
 
-      .cp-who {
-        display: flex;
-        gap: 4px;
-      }
-
-      .cp-who span {
-        border: 1px solid #1c2b2426;
+      .cv-search {
+        border: 1px solid #1c2b2433;
         border-radius: 999px;
         color: var(--soft);
+        margin: 10px;
+        padding: 4px 12px;
+      }
+
+      .cv-r {
+        border-top: 1px solid var(--rule);
+        column-gap: 8px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        padding: 9px 12px;
+      }
+
+      .cv-r.on {
+        background: #fbf3d9;
+      }
+
+      .cv-r b {
+        font-weight: 700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .cv-r small {
+        color: var(--soft);
+        font-family: var(--mono);
+        font-size: 10.5px;
+      }
+
+      .cv-r span {
+        color: var(--soft);
+        grid-column: 1 / 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .cv-r em {
+        color: #8a918b;
+        font-style: normal;
+      }
+
+      .cv-thread {
+        display: flex;
+        flex-direction: column;
+        height: 470px;
+      }
+
+      .cv-head {
+        align-items: baseline;
+        display: flex;
+        gap: 10px;
+        padding: 12px 16px 8px;
+        white-space: nowrap;
+      }
+
+      .cv-head b {
+        font-size: 17px;
+        font-weight: 800;
+      }
+
+      .cv-head span {
+        color: var(--soft);
+      }
+
+      .cv-head .cv-back {
+        color: var(--ink);
+        font-size: 16px;
+      }
+
+      .cv-head .cv-take {
+        align-self: center;
+        border: 1px solid #1c2b2433;
+        border-radius: 999px;
+        color: var(--ink);
+        margin-left: auto;
+        padding: 3px 12px;
+      }
+
+      .cv-tabs {
+        border: 1px solid #1c2b2433;
+        border-radius: 999px;
+        display: inline-flex;
+        margin: 0 16px 8px;
+        overflow: hidden;
+        width: max-content;
+      }
+
+      .cv-tabs span {
+        padding: 4px 14px;
+      }
+
+      .cv-tabs .on {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .cv-msgs {
+        background: var(--sand);
+        border-block: 1px solid var(--rule);
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 6px;
+        justify-content: flex-end;
+        min-height: 0;
+        overflow: hidden;
+        padding: 10px 14px;
+      }
+
+      .cv-msgs .msg {
+        flex: none;
+        max-width: 74%;
+        padding: 7px 11px 6px;
+      }
+
+      .cv-msgs .msg.m {
+        align-self: flex-start;
+      }
+
+      .cv-msgs .msg.b {
+        align-self: flex-end;
+      }
+
+      .cv-msgs .msg small {
+        font-size: 10.5px;
+      }
+
+      .cv-note {
+        align-self: center;
+        color: var(--soft);
+        flex: none;
+        font-size: 11px;
+      }
+
+      .cv-mail {
+        align-self: center;
+        background: var(--bubble-email);
+        border-radius: 10px;
+        display: grid;
+        flex: none;
         font-size: 12px;
-        padding: 2px 9px;
+        gap: 2px;
+        justify-items: center;
+        max-width: 80%;
+        padding: 7px 14px;
+        text-align: center;
       }
 
-      .cp-who .on {
-        background: #dce8f3;
-        border-color: transparent;
+      .cv-mail b {
+        align-items: center;
         color: #2f5f86;
+        display: flex;
+        font-weight: 700;
+        gap: 5px;
       }
 
-      .cp-new {
-        background: var(--yellow);
+      .cv-mail .ico,
+      .cv-app .ico {
+        height: 14px;
+        width: 14px;
+      }
+
+      .cv-app {
+        align-items: center;
+        align-self: center;
+        background: var(--bubble-bappy);
+        border-radius: 10px;
+        display: flex;
+        flex: none;
+        flex-wrap: wrap;
+        font-size: 12px;
+        gap: 6px;
+        justify-content: center;
+        padding: 6px 12px;
+      }
+
+      .cv-app .ico {
+        color: var(--cat-in);
+      }
+
+      .cv-app b {
+        font-weight: 700;
+      }
+
+      .cv-app u {
+        text-underline-offset: 2px;
+      }
+
+      .cv-compose {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        padding: 10px 14px;
+      }
+
+      .cv-compose span {
+        border: 1px solid #1c2b2433;
+        border-radius: 8px;
+        color: var(--soft);
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        padding: 6px 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .cv-compose b {
+        background: #f4c95d99;
         border-radius: 999px;
         font-weight: 700;
         margin-left: auto;
         padding: 6px 14px;
-      }
-
-      .cp-card {
-        background: var(--paper);
-        border: 1px solid var(--rule);
-        border-radius: 12px;
-        margin: 0 14px 14px;
-        padding: 14px 16px 6px;
-      }
-
-      .cp-card > p {
-        color: var(--soft);
-        margin-bottom: 10px;
-      }
-
-      .funnel {
-        border: 1px solid var(--rule);
-        border-radius: 12px;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .funnel div {
-        display: grid;
-        gap: 2px;
-        padding: 12px 16px 14px;
-        position: relative;
-      }
-
-      .funnel div + div::before {
-        color: #1c2b244d;
-        content: "›";
-        font-size: 22px;
-        left: -6px;
-        position: absolute;
-        top: 22px;
-      }
-
-      .funnel span {
-        color: var(--soft);
-      }
-
-      .funnel b {
-        font-size: 28px;
-        font-weight: 500;
-        letter-spacing: -0.01em;
-        line-height: 1.1;
-      }
-
-      .funnel .won b {
-        color: var(--green);
-      }
-
-      .funnel small {
-        color: var(--soft);
-        font-size: 12px;
-      }
-
-      .cp-cols,
-      .cp-r {
-        align-items: center;
-        column-gap: 14px;
-        display: grid;
-        grid-template-columns: minmax(0, 2fr) repeat(4, minmax(0, 0.7fr));
-      }
-
-      .cp-cols {
-        color: var(--soft);
-        font-weight: 600;
-        margin-top: 14px;
-        padding-block: 8px;
-      }
-
-      .cp-cols span:not(:first-child),
-      .cp-r > span:not(:first-child) {
-        text-align: right;
-      }
-
-      .cp-r {
-        border-top: 1px solid var(--rule);
-        padding-block: 9px;
-      }
-
-      .cp-r small {
-        color: var(--soft);
-        display: block;
-        font-size: 11.5px;
-      }
-
-      .cp-name {
-        min-width: 0;
-      }
-
-      .cp-name b {
-        font-weight: 500;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-
-      .cp-name i {
-        background: #dce8f3;
-        border-radius: 999px;
-        color: #2f5f86;
-        font-size: 11px;
-        font-style: normal;
-        margin-left: 6px;
-        padding: 1px 7px;
-      }
-
-      .cp-name small::before {
-        background: #4f86c6;
-        border-radius: 50%;
-        content: "";
-        display: inline-block;
-        height: 6px;
-        margin-right: 5px;
-        width: 6px;
-      }
-
-      .cp-r .won {
-        color: var(--green);
+        white-space: nowrap;
       }
 
       /* Conversation bubbles for the ability cards below. */
@@ -1930,10 +1981,21 @@
         .pa-me span,
         .pa-launch,
         .dl-filters,
-        .cp-tabs,
-        .cp-who,
-        .cp-new {
+        .cv-head span:not(.cv-back),
+        .cv-compose span {
           display: none;
+        }
+
+        .cv-thread {
+          height: auto;
+        }
+
+        .cv-msgs .msg {
+          max-width: 86%;
+        }
+
+        .cv-mail {
+          max-width: 100%;
         }
 
         .pa-me {
@@ -1968,39 +2030,6 @@
 
         .dl-cols span:nth-child(n + 4),
         .dl-r > span:nth-child(n + 4) {
-          display: none;
-        }
-
-        .cp-card {
-          margin: 0 10px 10px;
-          padding: 12px;
-        }
-
-        .funnel {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .funnel div + div::before {
-          display: none;
-        }
-
-        .funnel div {
-          padding: 10px 12px;
-        }
-
-        .funnel b {
-          font-size: 22px;
-        }
-
-        .cp-cols,
-        .cp-r {
-          grid-template-columns: minmax(0, 1fr) auto auto;
-        }
-
-        .cp-cols span:nth-child(3),
-        .cp-cols span:nth-child(4),
-        .cp-r > span:nth-child(3),
-        .cp-r > span:nth-child(4) {
           display: none;
         }
 
@@ -2063,6 +2092,7 @@
       <symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="4" rx="1" /><path d="M5 8v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8M10 12h4" /></symbol>
       <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4.5 21a7.5 7.5 0 0 1 15 0" /></symbol>
       <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01" /></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3.5 6.5 8.5 6.5 8.5-6.5" /></symbol>
       <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h12l-2.5 4.5L17 13H5" /></symbol>
       <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M3 13h5l1.5 3h5l1.5-3h5" /><path d="M5.5 5h13L21 13v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5z" /></symbol>
       <symbol id="i-case" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18" /></symbol>
@@ -2096,8 +2126,8 @@
       <div class="in">
         <div class="pa-switch" role="tablist" aria-label="Bappy's screens">
           <button type="button" role="tab" id="pa-t-opening" aria-controls="pa-v-opening" aria-selected="true" data-view="opening"><b>Opening</b><span>Who needs your brokers now</span><i></i></button>
+          <button type="button" role="tab" id="pa-t-conversation" aria-controls="pa-v-conversation" aria-selected="false" data-view="conversation"><b>Conversation</b><span>Bappy texts, answers and sends the application</span><i></i></button>
           <button type="button" role="tab" id="pa-t-deals" aria-controls="pa-v-deals" aria-selected="false" data-view="deals"><b>Deals</b><span>Applications in, and who brought them</span><i></i></button>
-          <button type="button" role="tab" id="pa-t-campaigns" aria-controls="pa-v-campaigns" aria-selected="false" data-view="campaigns"><b>Campaigns</b><span>What each campaign brings in</span><i></i></button>
         </div>
       </div>
       <div class="in stage">
@@ -2105,7 +2135,7 @@
           <div class="pa-top">
             <span class="wordmark">bappy</span>
             <span class="pa-shop">Juniper Business Capital</span>
-            <div class="pa-nav"><span class="on" data-go="opening">Opening</span><span data-go="deals">Deals</span><span data-go="campaigns">Campaigns</span><span>Chat <b>3</b></span></div>
+            <div class="pa-nav"><span class="on" data-go="opening">Opening</span><span data-go="deals">Deals</span><span>Campaigns</span><span>Chat <b>3</b></span></div>
             <span class="pa-search">Search</span>
             <span class="pa-me"><i>JR</i><span>Jordan Reyes<small>Broker</small></span></span>
           </div>
@@ -2168,6 +2198,37 @@
           </div>
           </div>
 
+          <div class="pa-view" id="pa-v-conversation" role="tabpanel" aria-labelledby="pa-t-conversation" hidden>
+          <p class="sr">A conversation in Bappy: the campaign's first text goes out as the broker; the merchant replies near midnight and Bappy answers right away, gets the email and sends the application from the broker's mailbox; the next morning the application comes back with five files.</p>
+          <div class="pa-body" aria-hidden="true">
+            <div class="pa-rail cv-list">
+              <div class="cv-search">Search</div>
+              <div class="cv-r on"><b>Bella's Bistro</b><small>11:48 PM</small><span><em>Bappy:</em> It's in your inbox now…</span></div>
+              <div class="cv-r"><b>Northside Auto</b><small>11:02 PM</small><span><em>Merchant:</em> can you call me in the morning</span></div>
+              <div class="cv-r"><b>Lena's Salon</b><small>9:40 PM</small><span><em>Bappy:</em> No problem, I'll watch for it…</span></div>
+              <div class="cv-r"><b>Pine Street Dental</b><small>6:15 PM</small><span><em>Merchant:</em> how fast can this fund?</span></div>
+              <div class="cv-r"><b>Harbor Plumbing</b><small>4:30 PM</small><span><em>Bappy:</em> Sounds good, I'll take a look…</span></div>
+            </div>
+            <div class="pa-list cv-thread">
+              <div class="cv-head">
+                <span class="cv-back">←</span><b>Bella's Bistro</b><span>Maria</span><span>With Bappy</span>
+                <span class="cv-take">Take over</span>
+              </div>
+              <div class="cv-tabs"><span>The deal</span><span class="on">Texts with Maria</span></div>
+              <div class="cv-msgs">
+                <div class="msg b">Hi Maria, this is Jordan with Juniper Business Capital. Still looking at funding for the restaurant?<small>Bappy · Tue 9:02 AM</small></div>
+                <div class="msg m">yes. what kind of terms are you offering?<small>Tue 11:46 PM</small></div>
+                <div class="msg b">Happy to get you real numbers. What's the best email for the application?<small>Bappy · 11:46 PM</small></div>
+                <div class="msg m">maria@example.com<small>11:48 PM</small></div>
+                <div class="cv-mail"><b><svg class="ico"><use href="#i-mail" /></svg>Email</b>Application emailed to Maria from Jordan Reyes's mailbox · 11:48 PM</div>
+                <div class="msg b">It's in your inbox now. Send it back with your last few bank statements.<small>Bappy · 11:48 PM</small></div>
+                <div class="cv-app"><svg class="ico"><use href="#i-doc" /></svg><b>Application</b>Came in by email · 5 files · Wed 9:12 AM <u>Open it</u></div>
+              </div>
+              <div class="cv-compose"><span>Text Maria as Jordan Reyes · Bappy pauses 20 min after you send</span><b>Send text</b></div>
+            </div>
+          </div>
+          </div>
+
           <div class="pa-view" id="pa-v-deals" role="tabpanel" aria-labelledby="pa-t-deals" hidden>
           <p class="sr">The Application in list: eight applications this week, six of them brought in by Bappy and two through the shop's own link, most ready to submit.</p>
           <div class="pa-head" aria-hidden="true">
@@ -2204,28 +2265,6 @@
           </div>
           </div>
 
-          <div class="pa-view" id="pa-v-campaigns" role="tabpanel" aria-labelledby="pa-t-campaigns" hidden>
-          <p class="sr">The Campaigns page: three running campaigns reached 1,240 merchants; 96 replied, 61 kept talking and 22 applied.</p>
-          <div class="cp-head" aria-hidden="true">
-            <span class="pa-title">Campaigns</span>
-            <span class="cp-tabs"><span class="on">Running 3</span><span>Finished 8</span></span>
-            <span class="cp-who"><span class="on">Everyone</span><span>Jordan</span><span>Riley</span><span>Taylor</span></span>
-            <span class="cp-new">+ New campaign</span>
-          </div>
-          <div class="cp-card" aria-hidden="true">
-            <p>3 running campaigns · started Oct 6</p>
-            <div class="funnel">
-              <div><span>Reached</span><b class="dl-num">1,240</b><small>merchants got the first text</small></div>
-              <div><span>Replied</span><b class="dl-num">96</b><small>7.7% of reached</small></div>
-              <div><span>Kept talking</span><b class="dl-num">61</b><small>64% of replies</small></div>
-              <div class="won"><span>Applied</span><b class="dl-num">22</b><small>36% of talking</small></div>
-            </div>
-            <div class="cp-cols"><span>Campaign</span><span>Reached</span><span>Replied</span><span>Kept talking</span><span>Applied</span></div>
-            <div class="cp-r"><span class="cp-name"><b>restaurants-texas</b><i>Jordan</i><small>Following up · next Mon 8:00 AM</small></span><span class="dl-num">520</span><span class="dl-num">41</span><span class="dl-num">27</span><span class="dl-num won">10</span></div>
-            <div class="cp-r"><span class="cp-name"><b>dental-illinois</b><i>Taylor</i><small>Following up · next Mon 8:00 AM</small></span><span class="dl-num">410</span><span class="dl-num">33</span><span class="dl-num">20</span><span class="dl-num won">7</span></div>
-            <div class="cp-r"><span class="cp-name"><b>retail-arizona</b><i>Riley</i><small>Following up · next 4:15 PM</small></span><span class="dl-num">310</span><span class="dl-num">22</span><span class="dl-num">14</span><span class="dl-num won">5</span></div>
-          </div>
-          </div>
         </div>
 
         <div class="pp" role="img" aria-label="The Bappy phone app: a notification that Maria at Bella's Bistro sent in an application, over the broker's Needs you list.">
@@ -2360,7 +2399,7 @@
             <div class="demo" aria-hidden="true">
               <div class="email">
                 <b>Application sent</b>
-                <span>from jordan@yourshop.com to Maria</span>
+                <span>from Jordan Reyes's mailbox to Maria</span>
               </div>
               <div class="card">
                 <div class="ready"><span class="check">✓</span>Application in · Bella's Bistro</div>
@@ -2465,7 +2504,7 @@
         var bar = document.querySelector(".pa-switch");
         var stage = document.querySelector(".stagewrap");
         var navs = Array.prototype.slice.call(document.querySelectorAll(".pa-nav [data-go]"));
-        var order = ["opening", "deals", "campaigns"];
+        var order = ["opening", "conversation", "deals"];
         var every = 7000;
         var timer = null;
         var stopped = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -2477,7 +2516,7 @@
             document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
           });
           navs.forEach(function (n) {
-            n.classList.toggle("on", n.dataset.go === view);
+            n.classList.toggle("on", n.dataset.go === (view === "conversation" ? "opening" : view));
           });
           restart();
         }
