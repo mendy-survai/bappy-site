@@ -290,7 +290,9 @@
         background: var(--sand);
         border-radius: 16px;
         box-shadow: 0 44px 90px -40px #0b2a2199, 0 0 0 1px #0b2a2114;
+        display: grid;
         font-size: 12.5px;
+        grid-template-columns: minmax(0, 1fr);
         overflow: hidden;
         padding-right: var(--overlap);
         width: calc(100% - var(--phone) + var(--overlap));
@@ -981,7 +983,7 @@
         top: -3px;
       }
 
-      /* Switching the screen: Opening, Deals, Campaigns. */
+      /* Switching the screen: Opening, Conversation, Deals. */
       .pa-switch {
         display: flex;
         flex-wrap: wrap;
@@ -1048,8 +1050,27 @@
         }
       }
 
+      /* The screens sit on top of each other: the next one fades in over the last. */
       .pa-view {
+        background: var(--sand);
+        display: flex;
+        flex-direction: column;
+        grid-area: 2 / 1;
         min-height: 514px;
+        transition: opacity 0.7s ease;
+        z-index: 1;
+      }
+
+      .pa-view[hidden] {
+        display: flex;
+        opacity: 0;
+        transition: opacity 0s linear 0.7s, visibility 0s linear 0.7s;
+        visibility: hidden;
+        z-index: 0;
+      }
+
+      .pa-view > .pa-body {
+        flex: 1;
       }
 
       .pa-nav span[data-go] {
@@ -2099,6 +2120,11 @@
         .pa-switch.running button[aria-selected="true"] i {
           animation: none;
         }
+
+        .pa-view,
+        .pa-view[hidden] {
+          transition: none;
+        }
       }
     </style>
   </head>
@@ -2523,12 +2549,14 @@
     </footer>
     <script>
       (function () {
+        // The screens play in turn, Opening → Conversation → Deals, and keep going.
+        // A click jumps to that screen and the turn carries on from there; choosing with
+        // the arrow keys holds the screen, and reduced motion never moves on its own.
         var tabs = Array.prototype.slice.call(document.querySelectorAll(".pa-switch button"));
         var bar = document.querySelector(".pa-switch");
-        var stage = document.querySelector(".stagewrap");
         var navs = Array.prototype.slice.call(document.querySelectorAll(".pa-nav [data-go]"));
         var order = ["opening", "conversation", "deals"];
-        var every = 7000;
+        var every = 6000;
         var timer = null;
         var stopped = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         var paused = false;
@@ -2558,24 +2586,19 @@
             show(order[(order.indexOf(current()) + 1) % order.length]);
           }, every);
         }
-        function choose(view) {
-          stopped = true;
-          show(view);
-        }
         tabs.forEach(function (t, i) {
-          t.addEventListener("click", function () { choose(t.dataset.view); });
+          t.addEventListener("click", function () { show(t.dataset.view); });
           t.addEventListener("keydown", function (e) {
             if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
             var next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
             next.focus();
-            choose(next.dataset.view);
+            stopped = true;
+            show(next.dataset.view);
           });
         });
         navs.forEach(function (n) {
-          n.addEventListener("click", function () { choose(n.dataset.go); });
+          n.addEventListener("click", function () { show(n.dataset.go); });
         });
-        stage.addEventListener("mouseenter", function () { paused = true; restart(); });
-        stage.addEventListener("mouseleave", function () { paused = false; restart(); });
         document.addEventListener("visibilitychange", function () { paused = document.hidden; restart(); });
         restart();
       })();
