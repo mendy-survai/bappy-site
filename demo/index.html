@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book a demo | Bappy</title>
+    <meta name="description" content="Book 30 minutes and see Bappy running an MCA shop." />
+    <link rel="canonical" href="https://bappy.ai/demo" />
+    <meta property="og:title" content="Book a demo | Bappy" />
+    <meta property="og:description" content="Book 30 minutes and see Bappy running an MCA shop." />
+    <meta property="og:url" content="https://bappy.ai/demo" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Bappy" />
+    <meta property="og:image" content="https://bappy.ai/share.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Bappy opens. Your brokers close." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#1f755f" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="/site.css" />
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <div class="top">
+      <nav class="in nav" aria-label="Primary">
+        <a class="wordmark" href="/">bappy</a>
+        <div class="nav-links">
+          <a href="/#how">How it works</a>
+          <a href="/results">Results</a>
+          <a href="/seat">What a seat includes</a>
+        </div>
+        <a class="nav-login" href="https://app.bappy.ai">Log in</a>
+        <a class="btn btn-yellow" href="/demo">Book a demo</a>
+      </nav>
+      <header class="in n-head"><h1>Book a demo</h1><p>30 minutes. We'll show you Bappy running a shop.</p></header>
+    </div>
+    <main>
+<section class="n-sec"><div class="in"><div class="n-form"><div class="n-q" data-q="brokers"><b>How many brokers do you have?</b><div class="n-chips"><button type="button" class="n-chip" aria-pressed="false">1 to 3</button><button type="button" class="n-chip" aria-pressed="false">4 to 10</button><button type="button" class="n-chip" aria-pressed="false">11 to 25</button><button type="button" class="n-chip" aria-pressed="false">More than 25</button></div></div><div class="n-q" data-q="heard"><b>How did you hear about Bappy?</b><div class="n-chips"><button type="button" class="n-chip" aria-pressed="false">Another shop</button><button type="button" class="n-chip" aria-pressed="false">WhatsApp</button><button type="button" class="n-chip" aria-pressed="false">Google</button><button type="button" class="n-chip" aria-pressed="false">An event</button><button type="button" class="n-chip" aria-pressed="false">Other</button></div></div><button type="button" class="btn btn-yellow n-go" id="n-go" disabled>Pick a time</button><noscript><a class="n-link" href="https://calendar.app.google/cBcp1Tieexc2Khy58">Pick a time</a></noscript></div></div></section>
+</main>
+    <footer class="end" style="padding-top: 0">
+      
+      <div class="in foot" style="margin-top: 0">
+        <span class="wordmark">bappy</span>
+        <p></p>
+        <span class="n-foot"><a href="/results">Results</a><a href="/seat">What a seat includes</a><a href="/your-own-ai-bot">Bappy and your own AI bot</a></span>
+        <a href="mailto:mendy@bappy.ai">mendy@bappy.ai</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Texting terms</a>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        var go = document.getElementById("n-go"), pick = {};
+        document.querySelectorAll(".n-q").forEach(function (q) {
+          q.addEventListener("click", function (e) {
+            var c = e.target.closest(".n-chip");
+            if (!c) return;
+            q.querySelectorAll(".n-chip").forEach(function (x) { x.setAttribute("aria-pressed", x === c); });
+            pick[q.dataset.q] = c.textContent;
+            go.disabled = !(pick.brokers && pick.heard);
+          });
+        });
+        go.addEventListener("click", function () {
+          try { window.va("event", { name: "Pick a time", data: pick }); } catch (e) {}
+          setTimeout(function () { location.href = "https://calendar.app.google/cBcp1Tieexc2Khy58"; }, 250);
+        });
+      })();
+    </script>
+  </body>
+</html>
