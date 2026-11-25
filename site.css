@@ -2204,3 +2204,8 @@ a {
   .n-table th, .n-table td { padding: 13px 12px; font-size: 15px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+@media (max-width: 860px) {
+  .nav { flex-wrap: wrap; }
+  .nav-links { display: flex; gap: 22px; margin-left: 0; order: 3; width: 100%; }
+}
